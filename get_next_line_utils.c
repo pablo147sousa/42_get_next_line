@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:22:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2024/11/28 16:04:52 by pmoreira         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:08:25 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	ft_len(const char *str)
 
 char	*ft_fill_line(char *buffer, int fd)
 {
-	int	rd;
+	int		rd;
 	char	*temp;
 
 	rd = 1;
@@ -38,7 +38,7 @@ char	*ft_fill_line(char *buffer, int fd)
 		if (*buffer == 0)
 			rd = read(fd, buffer, BUFFER_SIZE);
 		if (rd <= 0)
-			break;
+			break ;
 		temp = ft_strjoin_nl(temp, buffer);
 		if (temp == 0)
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:20:42 by pmoreira          #+#    #+#             */
-/*   Updated: 2024/11/28 15:41:00 by pmoreira         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:07:51 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ char	*get_next_line(int fd)
 		return (0);
 	return (line);
 }
-/* 
+/*
 #include <fcntl.h>
+#include <stdio.h>
 
-int main(void)
+int	main(void)
 {
-	int fd;
-	char *str;
-	str = "";
+	int		fd;
+	char	*str;
 
+	str = "";
 	fd = open("file.txt", O_RDONLY);
 	while (str != NULL)
 	{
