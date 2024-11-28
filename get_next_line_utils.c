@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:22:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2024/11/26 15:46:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:04:52 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_len(const char *str)
 {
 	size_t	i;
 
+	if (str == 0)
+		return (0);
 	i = 0;
 	while (str[i] != 0 && str[i] != '\n')
 		i++;
@@ -24,12 +26,25 @@ size_t	ft_len(const char *str)
 	return (i);
 }
 
-void	ft_fill_buffer(char *buffer, int fd)
+char	*ft_fill_line(char *buffer, int fd)
 {
-	if (!(*buffer))
-		read(fd, buffer, BUFFER_SIZE);
-	else
+	int	rd;
+	char	*temp;
+
+	rd = 1;
+	temp = 0;
+	while (ft_str_nl(temp) == 0 && rd > 0)
+	{
+		if (*buffer == 0)
+			rd = read(fd, buffer, BUFFER_SIZE);
+		if (rd <= 0)
+			break;
+		temp = ft_strjoin_nl(temp, buffer);
+		if (temp == 0)
+			return (0);
 		ft_refill_buffer(buffer);
+	}
+	return (temp);
 }
 
 char	*ft_strjoin_nl(char *line, char *buffer)
@@ -54,9 +69,8 @@ char	*ft_strjoin_nl(char *line, char *buffer)
 		buffer++;
 	}
 	if (*buffer == '\n')
-		join[i] = '\n';
-	else
-		join[i] = 0;
+		join[i++] = '\n';
+	join[i] = 0;
 	free(line);
 	return (join);
 }
@@ -70,5 +84,22 @@ void	ft_refill_buffer(char *buffer)
 	j = ft_len(buffer);
 	while (buffer[j] != 0)
 		buffer[i++] = buffer[j++];
-	buffer[i] = 0;
+	while (i < BUFFER_SIZE)
+		buffer[i++] = 0;
+}
+
+char	*ft_str_nl(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str == 0)
+		return (0);
+	while (str[i] != 0)
+	{
+		if (str[i] == '\n')
+			return (&str[i]);
+		i++;
+	}
+	return (0);
 }

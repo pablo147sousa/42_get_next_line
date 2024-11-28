@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:21:39 by pmoreira          #+#    #+#             */
-/*   Updated: 2024/11/26 15:46:09 by pmoreira         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:06:57 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);
 char	*ft_strjoin_nl(char *line, char *buffer);
+char	*ft_str_nl(char *str);
+char	*ft_fill_line(char *buffer, int fd);
 size_t	ft_len(const char *str);
-void	ft_fill_buffer(char *buffer, int fd);
 void	ft_refill_buffer(char *buffer);
 
 #endif
