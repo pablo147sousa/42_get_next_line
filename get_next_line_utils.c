@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:22:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2024/11/28 16:08:25 by pmoreira         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:01:42 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_fill_line(char *buffer, int fd)
 
 	rd = 1;
 	temp = 0;
-	while (ft_str_nl(temp) == 0 && rd > 0)
+	while (ft_str_nl(temp) == NULL && rd > 0)
 	{
 		if (*buffer == 0)
 			rd = read(fd, buffer, BUFFER_SIZE);
@@ -44,6 +44,8 @@ char	*ft_fill_line(char *buffer, int fd)
 			return (0);
 		ft_refill_buffer(buffer);
 	}
+	if (ft_str_nl(temp) == NULL && rd < 0)
+		return (free(temp), NULL);
 	return (temp);
 }
 
@@ -52,7 +54,7 @@ char	*ft_strjoin_nl(char *line, char *buffer)
 	char	*join;
 	ssize_t	i;
 
-	if (line == 0)
+	if (line == NULL)
 	{
 		line = (char *) malloc(1);
 		line[0] = 0;
