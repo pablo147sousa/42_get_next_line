@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:55:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2024/11/29 14:23:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:21:53 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,26 @@ char	*get_next_line(int fd)
 // {
 // 	int		fds[3];
 // 	int		i;
-// 	char	*str;
+// 	char	*str[3];
 
-// 	str = "";
+// 	str[0] = "";
+// 	str[1] = "";
+// 	str[2] = "";
 // 	i = 0;
 // 	fds[0] = open("file.txt", O_RDONLY);
 // 	fds[1] = open("file2.txt", O_RDONLY);
 // 	fds[2] = open("file3.txt", O_RDONLY);
 // 	while (1)
 // 	{
-// 		str = get_next_line(fds[i++]);
-// 		if (str != NULL)
-// 			printf("%s", str);
-// 		free(str);
+// 		str[i] = get_next_line(fds[i]);
+// 		if (str[i] != 0)
+// 			printf("FD[%d]:%s", i, str[i]);
+// 		free(str[i]);
+// 		i++;
 // 		if(i == 3)
 // 			i = 0;
+// 		if (!str[0] && !str[1] && !str[2])
+// 			break;
 // 	}
 // 	close(fds[0]);
 // 	close(fds[1]);
