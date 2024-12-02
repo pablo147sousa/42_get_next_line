@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:55:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2024/11/29 15:21:53 by pmoreira         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:02:42 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ char	*get_next_line(int fd)
 		return (0);
 	return (line);
 }
-
-// #include <fcntl.h>
 
 // int	main(void)
 // {
